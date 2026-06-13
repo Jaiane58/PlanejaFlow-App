@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: 18
       - run: npm install
-      - run: npx expo export --platform web --no-ssr
+      - run: npx expo build:web
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: web-build
       - uses: actions/deploy-pages@v4
