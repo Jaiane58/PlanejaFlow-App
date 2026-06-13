@@ -1,4 +1,4 @@
-name: Deploy PlanejaFlow to GitHub Pages
+name: Deploy
 
 on:
   push:
@@ -10,39 +10,17 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
-  build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
-
-      - name: Instalar dependências
-        run: npm install
-
-      - name: Build para web
-        run: npm run build:web
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Fazer upload
-        uses: actions/upload-pages-artifact@v3
+      - run: npm install
+      - run: npx expo export --platform web --no-ssr
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-
-      - name: Deploy para GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
