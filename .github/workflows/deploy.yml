@@ -32,10 +32,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      - name: Build para web (modo produção)
-        run: |
-          npx expo export --platform web --output-dir web-build
-          cp web-build/index.html web-build/200.html
+      - name: Build para web
+        run: npm run build:web
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -43,7 +41,7 @@ jobs:
       - name: Fazer upload
         uses: actions/upload-pages-artifact@v3
         with:
-          path: web-build
+          path: dist
 
       - name: Deploy para GitHub Pages
         id: deployment
