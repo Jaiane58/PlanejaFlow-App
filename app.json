@@ -12,28 +12,10 @@
       "backgroundColor": "#000000"
     },
     "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSCameraUsageDescription": "O app precisa acessar a câmera para adicionar fotos às suas metas.",
-        "NSPhotoLibraryUsageDescription": "O app precisa acessar suas fotos para adicionar imagens às suas metas."
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#000000"
-      },
-      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
-    },
+    "platforms": ["ios", "android", "web"],
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "seu-id-aqui"
-      }
+      "output": "static"
     }
   }
 }
