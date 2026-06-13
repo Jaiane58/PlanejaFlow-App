@@ -1,0 +1,13 @@
+node_modules/
+.expo/
+.webpack/
+dist/
+build/
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.backup
